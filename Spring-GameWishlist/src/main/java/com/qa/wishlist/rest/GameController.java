@@ -2,7 +2,6 @@ package com.qa.wishlist.rest;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +38,8 @@ public class GameController {
 		return ResponseEntity.ok(this.service.getGames());
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Game> updateGame(@RequestBody Game game, @PathParam("id") Long id) {
+	@PutMapping("/updateGame/{id}")
+	public ResponseEntity<Game> updateGame(@RequestBody Game game, @PathVariable Long id) {
 		return new ResponseEntity<Game>(this.service.updateGame(game, id), HttpStatus.ACCEPTED);
 	}
 	

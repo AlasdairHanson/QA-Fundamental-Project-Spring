@@ -1,6 +1,7 @@
 package com.qa.wishlist.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ public class GameService {
 	}
 	
 	public Game updateGame(Game game, Long id) {
+		Optional<Game> optGame = this.repo.findById(id);
 		Game oldGame = this.repo.findById(id).orElseThrow();
 		
 		oldGame.setGameTitle(game.getGameTitle());
